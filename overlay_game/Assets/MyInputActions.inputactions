@@ -1,0 +1,33 @@
+{
+    "name": "MyInputActions",
+    "maps": [
+        {
+            "name": "GameMap",
+            "id": "fe901302-9f43-4e40-91f0-cc4cf7983ef9",
+            "actions": [
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "84e43f8d-bb76-4626-93f9-d8da52a022cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "209b565d-e1be-4761-a7dd-51eb18942b70",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

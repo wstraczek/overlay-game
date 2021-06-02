@@ -79,6 +79,7 @@ public class MainMenuScript : MonoBehaviour
     }
 
     public void onButtonGameClicked(GameObject button){
+        button.GetComponent<Button>().interactable = false;
         StartCoroutine( ChangeColor(button));
     }
 
@@ -101,14 +102,15 @@ public class MainMenuScript : MonoBehaviour
     public Button MakeButton() {  
         GameObject button = (GameObject) Instantiate( buttonPrefab ) ;
         Canvas canvas = FindObjectOfType<Canvas>();
-        float h = canvas.GetComponent<RectTransform>().rect.height;
-        float w = canvas.GetComponent<RectTransform>().rect.width;
-        float width = Random.Range(40.0f, w/4.0f);
-        float height = Random.Range(40.0f, h/2.0f);
         var panel = GameObject.Find("Panel Game Area");
+        var panelRect = panel.GetComponent<RectTransform>();
+        float h = panelRect.rect.height;
+        float w = panelRect.rect.width;
+        float width = Random.Range(w*0.05f, w/5.0f);
+        float height = Random.Range(h*0.05f, h/4.0f);
         button.GetComponent<RectTransform>().SetParent(panel.transform);
-        button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, Random.Range(0.0f, w-width), width);
-        button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, Random.Range(0.0f, h*0.9f-height), height); 
+        button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, Random.Range(0.0f+width/2.0f, w-width-width/2.0f), width);
+        button.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, Random.Range(0.0f+height/2.0f, h-height-height/2.0f), height); 
         button.GetComponent<Image>().color = new Color(Random.value, Random.value, Random.value);
 		button.GetComponent<Button>().onClick.AddListener(delegate { onButtonGameClicked(button); });
         return button.GetComponent<Button>();
